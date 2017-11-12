@@ -1,11 +1,16 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class WykazS {
 	ArrayList<Student> wykaz = new ArrayList<>();
-	ArrayList<Integer> oceny = new ArrayList<>();
 
-	void wstawStudenta(int nr, String imie) {
+	void wstawStudenta(int nr, String imie) throws DuplikatException {
+
 		wykaz.add(new Student(nr, imie));
+		System.out.println(wykaz.get(zwroc(nr)).getNr());
+		
+
 	}
 
 	void wstawOcene(int nr, int ocena) {
@@ -26,10 +31,30 @@ public class WykazS {
 		System.out.println(wykaz.get(zwroc(nr)));
 	}
 
+	void wypiszIterator(int nr) {
+
+		for (Iterator<Student> iter = wykaz.iterator(); iter.hasNext();) {
+			Student s = iter.next();
+			Collections.sort(s.oceny); // najnizsz¹ ocenê przestawia na koniec i sprawdza czy jest >= nr
+			if (s.oceny.get(0) >= nr) {
+				System.out.println(s);
+			}
+		}
+
+	}
+
 	void wypisz() {
 		for (Student s : wykaz) {
 			System.out.println(s);
 		}
+	}
+
+	void sortujA() {
+		Collections.sort(wykaz);
+	}
+
+	void sortujS() {
+		Collections.sort(wykaz, new StudentMarkComparator());
 	}
 
 }
