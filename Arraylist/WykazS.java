@@ -8,6 +8,7 @@ public class WykazS {
 	void wstawStudenta(int nr, String imie) throws DuplikatException {
 		for (Student s : wykaz) {
 			if (s.getNr() == nr) {
+				System.out.println("Zduplikowany numer: " + nr);
 				throw new DuplikatException("duplikat");
 			}
 		}

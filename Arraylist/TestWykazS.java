@@ -15,7 +15,6 @@ class TestWykazS {
 			ws.wstawStudenta(246749, "Bogdan");
 		} catch (DuplikatException ex) {
 			ex.printStackTrace();
-			System.out.println("Zduplikowany numer: " + 246749);
 		}
 
 		ws.wstawOcene(199200, 2);
