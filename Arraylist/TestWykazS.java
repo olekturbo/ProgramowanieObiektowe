@@ -11,6 +11,12 @@ class TestWykazS {
 		ws.wstawStudenta(199205, "Jan");
 		ws.wstawStudenta(189557, "Wiesiek");
 		ws.wstawStudenta(246749, "Aleksander");
+		try {
+			ws.wstawStudenta(246749, "Bogdan");
+		} catch (DuplikatException ex) {
+			ex.printStackTrace();
+			System.out.println("Zduplikowany numer: " + 246749);
+		}
 
 		ws.wstawOcene(199200, 2);
 		ws.wstawOcene(199200, 2);

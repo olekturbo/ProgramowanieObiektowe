@@ -6,11 +6,12 @@ public class WykazS {
 	ArrayList<Student> wykaz = new ArrayList<>();
 
 	void wstawStudenta(int nr, String imie) throws DuplikatException {
-
+		for (Student s : wykaz) {
+			if (s.getNr() == nr) {
+				throw new DuplikatException("duplikat");
+			}
+		}
 		wykaz.add(new Student(nr, imie));
-		System.out.println(wykaz.get(zwroc(nr)).getNr());
-		
-
 	}
 
 	void wstawOcene(int nr, int ocena) {
